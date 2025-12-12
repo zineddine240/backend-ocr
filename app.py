@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 
 # Charge la clé API
 load_dotenv()
-
 app = Flask(__name__)
 CORS(app) # Important pour que Next.js puisse communiquer avec Python
 
@@ -23,7 +22,7 @@ else:
 @app.route('/', methods=['GET', 'POST'])
 def home():
     # Petit check pour voir si le serveur est en ligne
-    if request.method == 'GET':
+    if request.method == 'GET' or request.method == 'HEAD':
         return jsonify({"status": "Online", "service": "Pure OCR"})
 
     if request.method == 'POST':
